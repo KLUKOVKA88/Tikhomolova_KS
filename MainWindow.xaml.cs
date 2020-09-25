@@ -19,7 +19,7 @@ namespace MailSender_TikhomolovaKS
 
             var message = new MailMessage(from, to);  //создаем почтовое отправление
 
-            message.Subject = txbLetter_2.Text;       //тема письма
+            message.Subject = txbLetter_2.Text;       //тема письма1
             message.Body = txbLetter_3.Text;          //текст письма
 
             //создаем клиента SMTP почты, через который будет отправляться почта
