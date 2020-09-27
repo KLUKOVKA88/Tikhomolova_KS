@@ -43,9 +43,15 @@
                                 <ComboBoxItem Content="smpt.gmail.com"/>
                                 <ComboBoxItem Content="smpt.mail.ru"/>
                             </ComboBox>
-                            <Button Content="Add"/>
-                            <Button Content="Edit"/>
-                            <Button Content="Del"/>
+                            <Button>
+                                <Image Source="Media/add.png" Height="12"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Media/edit.png" Height="12"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Media/remove.png" Height="12"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MinWidth="120" MaxWidth="200"
@@ -233,6 +239,9 @@
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="5"></TextBlock>
                 </Grid>
             </TabItem>
+            <!--<TabItem Header="Котики">
+                <Image Source="https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg"></Image>
+            </TabItem>-->
         </TabControl>
     </DockPanel>
 </Window>
