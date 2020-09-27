@@ -8,7 +8,6 @@
         xmlns:m="clr-namespace:MailSender_TikhomolovaKS.Models"
         xmlns:local="clr-namespace:MailSender_TikhomolovaKS"
         xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="MailSender_TikhomolovaKS.MainWindow"
-        
         Title="Приложение по отправке электронной почты" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -52,7 +51,7 @@
                             <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
-                            <ComboBox MinWidth="120" MaxWidth="200"
+                            <ComboBox Name="SendersList" MinWidth="120" MaxWidth="200"
                                       SelectedIndex="0"
                                       ItemsSource="{x:Static data:TestData.Senders}">
                                 <ComboBox.ItemTemplate >
@@ -87,7 +86,7 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей">
-                        <DataGrid ItemsSource="{x:Static data:TestData.Recipients}"
+                        <DataGrid Name="RecipientsList" ItemsSource="{x:Static data:TestData.Recipients}"
                                   AutoGenerateColumns="False"
                                   GridLinesVisibility="Vertical"
                                   AlternatingRowBackground="LightBlue"
@@ -118,7 +117,7 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="Отправить"/>
+                                <Button Content="Отправить" Click="OnSendButtonClick"/>
                                 <Button Content="Запланировать"/>
                             </StackPanel>
                         </StackPanel>
