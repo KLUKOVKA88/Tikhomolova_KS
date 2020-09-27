@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Media\" />
+    <None Remove="Media\add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Media\add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome5" Version="2.0.8" />
   </ItemGroup>
 
 </Project>
