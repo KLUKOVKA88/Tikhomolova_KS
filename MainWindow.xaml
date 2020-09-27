@@ -5,61 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender_TikhomolovaKS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
-    <Grid>
-
-        <Grid HorizontalAlignment="Left" Width="500" Height="150" Margin="134,26,0,0" VerticalAlignment="Top" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="33*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Width="490" Height="140" StrokeThickness="1" Stroke="LightGray" Grid.ColumnSpan="2" Margin="5,5,5,5"></Rectangle>
-            <Label Content="Заполните свои почтовые данные:" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="98,18,0,0" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>
-            <Label Content="Логин:" HorizontalAlignment="Left" Margin="98,57,0,0" VerticalAlignment="Top" Width="89" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txbMyLogin" HorizontalAlignment="Left" Height="26" Margin="46,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Grid.Column="1"/>
-            <Label Content="Пароль:" HorizontalAlignment="Left" Height="26" Margin="98,88,0,0" VerticalAlignment="Top" Width="105" Grid.ColumnSpan="2"/>
-            <PasswordBox x:Name="txbMyPassword" HorizontalAlignment="Left" Height="26" Margin="46,88,0,0" VerticalAlignment="Top" Width="193" Grid.Column="1"/>
-        </Grid>
-
-        <Grid HorizontalAlignment="Left" Width="500" Height="234" Margin="134,181,0,0" VerticalAlignment="Top" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="139*"/>
-                <ColumnDefinition Width="361*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Width="490" StrokeThickness="1" Stroke="LightGray" Grid.ColumnSpan="2" Margin="5,10,5,0"/>
-            <Label Content="Почтовые реквизиты:" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="98,18,0,0" VerticalAlignment="Top" Width="311" Grid.ColumnSpan="2"/>
-
-            <Label Content="Получатель:" Width="89"
-                   HorizontalAlignment="Left" 
-                   VerticalAlignment="Top"
-                   Margin="98,57,0,0" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txbLetter_1" Width="193" Height="26"
-                     HorizontalAlignment="Left" 
-                     VerticalAlignment="Top"
-                     Margin="77,57,0,0" TextWrapping="Wrap" Grid.Column="1"/>
-
-            <Label Content="Тема письма:" Width="105" Height="26"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top" Margin="98,88,0,0" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txbLetter_2" Width="193" Height="26"
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Margin="77,88,0,0" TextWrapping="Wrap" Grid.Column="1"/>
-
-            <Label Content="Текст письма:" Width="105" Height="26"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="98,119,0,0" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txbLetter_3" Width="261" Height="68"
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                Margin="77,119,0,0" TextWrapping="Wrap" Grid.Column="1"/>
+        Title="Приложение по отправке электронной почты" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать" />
+                <MenuItem Header="Открыть" />
+                <MenuItem Header="Закрыть" />
+                <MenuItem Header="Сохранить" />
+                <Separator/>
+                <MenuItem Header="Выход" />
+            </MenuItem>
+            <MenuItem Header="Сервис">
+                <MenuItem Header="Параметры"/>
+            </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <ResizeGrip/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Готов!"/>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl>
             
-            <Button Content="Отправить" Width="150" Height="25"
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Bottom"
-                    Margin="31,0,0,10" Grid.Column="1" Click="Button_Click"/>
-        </Grid>
+        </TabControl>
+    </DockPanel> 
+      
 
-
-    </Grid>
 </Window>
