@@ -8,7 +8,7 @@ namespace MailSender_TikhomolovaKS.Models
     {
         public string Address { get; set; }
 
-        private int _Port;
+        private int _Port = 25;
 
         public int Port
         {
@@ -28,5 +28,10 @@ namespace MailSender_TikhomolovaKS.Models
         public string Password { get; set; }
 
         public string Description { get; }
+
+
+
+        //public override string ToString() => $"{Address}:{Port}";
+       
     }
 }
