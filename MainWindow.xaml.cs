@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+//using Xceed.Wpf.Toolkit.Panels;
 using MailSender.lib;
 using System.Net;
 using System.Net.Mail;
