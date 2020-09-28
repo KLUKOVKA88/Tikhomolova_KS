@@ -22,13 +22,29 @@ namespace MailSender_TikhomolovaKS
             var sender = SendersList.SelectedItem as Sender;
             if (sender is null) return;
 
-            if (!(RecipientsList.SelectedItem is Recipient recipient)) return;
+            //проверка на пустоту заполнения темы и текста письма
+            if (letterTitle.Text == "" || letterBody.Text == "")
+            {
+                tabControl.SelectedItem = tabLetters;
+                MessageBox.Show("Письмо не заполнено!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!(RecipientsList.SelectedItem is Recipient recipient))
+            {
+                tabControl.SelectedItem = tabLists;
+                MessageBox.Show("Не выбран адресат!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                
             if (!(ServersList.SelectedItem is Server server)) return;
             if (!(MessagesList.SelectedItem is Message message)) return;
 
             var send_service = new MailSenderService
             {
-                SercerAddress = server.Address,
+                ServerAddress = server.Address,
                 ServerPort=server.Port,
                 UseSSL = server.UseSSL,
                 Login = server.Login,
