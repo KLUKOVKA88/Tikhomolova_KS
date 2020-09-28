@@ -45,5 +45,10 @@ namespace MailSender_TikhomolovaKS
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void btnClock_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabPlanner;
+        }
     }
 }

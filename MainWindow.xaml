@@ -34,7 +34,7 @@
                 <TextBlock Text="Готов!"/>
             </StatusBarItem>
         </StatusBar>
-        <TabControl>
+        <TabControl Name="tabControl">
             <TabItem Header="Списки">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
@@ -72,7 +72,7 @@
 
                         </ToolBar>
                         <ToolBar Header="Перейти в планировщик" Band="0">
-                            <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue" ToolTip="Под вопросом???"/>
+                            <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue" ToolTip="Под вопросом???" Click="btnClock_Click"/>
                         </ToolBar>
                         <ToolBar Header="Получатели" Band="1">
                             <Button ToolTip="Добавить">
@@ -100,7 +100,7 @@
                     </GroupBox>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Планировщик">
+            <TabItem Header="Планировщик" Name="tabPlanner">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
