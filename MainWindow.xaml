@@ -117,8 +117,21 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="Отправить" Click="OnSendButtonClick"/>
-                                <Button Content="Запланировать"/>
+
+                                <Button ToolTip="Отправить сразу" Click="OnSendButtonClick">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="Regular_Envelope" Height="12" Foreground="DarkBlue"/>
+                                        <TextBlock Text="Отправить" Margin="5,0,0,0"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button ToolTip="Запланированная отправка" Click="btnClock_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="Regular_Clock" Height="12" Foreground="DarkBlue"/>
+                                        <TextBlock Text="Запланировать" Margin="5,0,0,0"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
