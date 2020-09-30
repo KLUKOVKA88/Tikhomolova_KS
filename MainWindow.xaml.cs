@@ -1,7 +1,10 @@
-﻿using System;
+﻿using System.Windows;
+//using Xceed.Wpf.Toolkit.Panels;
+using MailSender.lib;
 using System.Net;
 using System.Net.Mail;
-using System.Windows;
+using MailSender_TikhomolovaKS.Data;
+using MailSender_TikhomolovaKS.Models;
 
 namespace MailSender_TikhomolovaKS
 {
@@ -10,33 +13,59 @@ namespace MailSender_TikhomolovaKS
         public MainWindow()
         {
             InitializeComponent();
+
+            //ServersList.ItemsSource = TestData.Servers;
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnSendButtonClick(object Sender, RoutedEventArgs E)
         {
-            var to = new MailAddress(txbLetter_1.Text);      //кому отправляем
-            var from = new MailAddress(txbMyLogin.Text, "Robot");     //от кого отправляем
+            var sender = SendersList.SelectedItem as Sender;
+            if (sender is null) return;
 
-            var message = new MailMessage(from, to);  //создаем почтовое отправление
-
-            message.Subject = txbLetter_2.Text;       //тема письма
-            message.Body = txbLetter_3.Text;          //текст письма
-
-            //создаем клиента SMTP почты, через который будет отправляться почта
-            //var client = new SmtpClient("smtp.mail.ru", 465);
-            var client = new SmtpClient("smtp.yandex.ru", 25);
-            client.EnableSsl = true;
-
-            //указываем учетные данные почты клиента
-            client.Credentials = new NetworkCredential
+            //проверка на пустоту заполнения темы и текста письма
+            if (letterTitle.Text == "" || letterBody.Text == "")
             {
-                UserName = txbMyLogin.Text,
-                SecurePassword = txbMyPassword.SecurePassword
+                tabControl.SelectedItem = tabLetters;
+                MessageBox.Show("Письмо не заполнено!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!(RecipientsList.SelectedItem is Recipient recipient))
+            {
+                tabControl.SelectedItem = tabLists;
+                MessageBox.Show("Не выбран адресат!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                
+            if (!(ServersList.SelectedItem is Server server)) return;
+            if (!(MessagesList.SelectedItem is Message message)) return;
+
+            var send_service = new MailSenderService
+            {
+                ServerAddress = server.Address,
+                ServerPort=server.Port,
+                UseSSL = server.UseSSL,
+                Login = server.Login,
+                Password = server.Password,
             };
 
-            //отправляем сообщение
-            client.Send(message);
-            MessageBox.Show("Письмо было успешно отправлено!");
+            try
+            {
+                send_service.SendMessage(sender.Address, recipient.Address, message.Subject, message.Body);
+            }
+            catch (SmtpException error)
+            {
+                MessageBox.Show("Ошибка при отправке почты " + error.Message, "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnClock_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabPlanner;
         }
     }
 }
